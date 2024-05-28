@@ -14,4 +14,18 @@ export class PasswordService {
   getPasswords() {
     return this.http.get(this.apiUrl);
   }
+
+  deletePassword(password:any) {
+    const url = `${this.apiUrl}/${password.id}`;
+    return this.http.delete(url);
+  }
+
+  addPassword(password: any): Observable<any> {
+    const url = `${this.apiUrl}`;
+    return this.http.post(url, password, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 }
